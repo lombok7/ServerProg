@@ -83,8 +83,11 @@ public class MemberController extends HttpServlet {
 			
 			loginMember(request, response);
 		
-		}
+		} else if (cmd.equals("logout")) {
 		
+			logoutMember(request, response);
+			
+		}		
 		// System.out.println("======= service =======");
 		// System.out.println(request.getParameter("id"));
 		// System.out.println(request.getParameter("pwd"));
@@ -97,21 +100,17 @@ public class MemberController extends HttpServlet {
 		String pwd = request.getParameter("pwd");
 		
 		MemberDAO mdao = new MemberDAO();
-		boolean result = mdao.checkLogin(id, pwd);
+		MemberVO mvo = mdao.checkLogin(id, pwd);
 		
-		if (result) {
+		if (mvo instanceof MemberVO) {
+			
 			HttpSession session = request.getSession();
-			session.setAttribute("loginid",id);
-			System.out.println(session.getAttribute("loginid") + "로그인 되었습니다.");
 			
-		} else {
-		
-			String errMsg = "아이디와 비밀번호를 확인해 주세요.";
+			session.setAttribute("loginid", mvo.getId());
+			session.setAttribute("loginfilename", mvo.getFilename());
 			
-			request.setAttribute("errMsg", errMsg);
+			RequestDispatcher rd = request.getRequestDispatcher("./member.do?cmd=selectall");
 						
-			RequestDispatcher rd = request.getRequestDispatcher("./err.jsp");
-		
 			try {
 				rd.forward(request, response);
 			} catch (ServletException se) {
@@ -119,8 +118,45 @@ public class MemberController extends HttpServlet {
 				se.printStackTrace();
 			} catch (IOException ie) {
 				ie.printStackTrace();
+			}			
+			
+		} else {
+		
+			String errMsg = "아이디와 비밀번호를 확인해 주세요.";
+			
+			request.setAttribute("errMsg", errMsg);
+						
+			try {
+				
+				RequestDispatcher rd = request.getRequestDispatcher("./err.jsp");
+				rd.forward(request, response);
+			
+			} catch (ServletException se) {
+				// TODO Auto-generated catch block
+				se.printStackTrace();
+			} catch (IOException ie) {
+				ie.printStackTrace();
 			}
 		}
+	}
+	
+	public void logoutMember(HttpServletRequest request,
+			HttpServletResponse response) {
+		
+		HttpSession session = request.getSession();
+		session.invalidate();
+		
+		try {
+		
+			RequestDispatcher rd = request.getRequestDispatcher("./index.jsp");
+			rd.forward(request, response);
+			
+		} catch (IOException ie) {
+			ie.printStackTrace();
+		} catch (ServletException se) {
+			se.printStackTrace();
+		}
+	
 	}
 
 	public void insertMember(HttpServletRequest request,
@@ -142,6 +178,7 @@ public class MemberController extends HttpServlet {
 		
 		// 이 순간 파일 업로드됨.
 		try {
+			
 			request.setCharacterEncoding("UTF-8");
 			response.setCharacterEncoding("UTF-8");
 			
@@ -255,12 +292,14 @@ public class MemberController extends HttpServlet {
 		MemberVO mvo = mdao.selectMember(idx);
 		
 		if (mvo.getFilename() == null) {
+
 			request.setAttribute("filepath", "NO FILE");
 		} else {
+			
 			request.setAttribute("filelocalpath", folderPath + mvo.getFilename());
 			request.setAttribute("filewebpath", "./upimage/" + mvo.getFilename());
 			// System.out.println(folderPath + mvo.getFilename());
-		
+
 		}
 		
 		request.setAttribute("member", mvo);
@@ -269,8 +308,10 @@ public class MemberController extends HttpServlet {
 		// 경로 '/'로 시작할 것.
 		// HttpServletRequest, HttpServletResponse, RequestDispatcher 등 연구대상.
 		try {
+
 			RequestDispatcher rd = request.getRequestDispatcher("./showResult.jsp");
 			rd.forward(request, response);
+		
 		} catch (ServletException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -291,8 +332,10 @@ public class MemberController extends HttpServlet {
 		request.setAttribute("mvoList", mvoList);
 		
 		try {
+	
 			RequestDispatcher rd = request.getRequestDispatcher("./showMember.jsp");
 			rd.forward(request, response);
+		
 		} catch (ServletException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

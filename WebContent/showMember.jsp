@@ -2,7 +2,22 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-    
+<%
+	String loginid = (String)session.getAttribute("loginid");
+	String loginfilename = (String)session.getAttribute("loginfilename");
+
+	System.out.println("loginid : " + loginid);
+	System.out.println("loginfilename : " + loginfilename);	
+	
+	if (loginid == null) {
+		
+		out.print("<script>");
+		out.print("alert('로그인이 필요한 페이지입니다.');");
+		out.print("location.href='./index.jsp';");
+		out.print("</script>");
+		
+	}
+%>    
 <!DOCTYPE html>
 <html>
 	<head>
@@ -14,6 +29,7 @@
 	<body>
 		<div id="memberlist">
 			<h3>회원 목록</h3>
+			<p /><span class="loginid"><%= loginid %></span> [ <img src="./upimage/<%= loginfilename %>" /> ] 님이 로그인 중 입니다. <a href="./member.do?cmd=logout">[로그아웃]</a>
 			<table>
 				<thead>
 					<tr>
