@@ -1,0 +1,115 @@
+* {
+	margin:0;
+	padding:0;
+}
+
+img {
+	border:none;
+}
+
+a {
+	color:#333;
+	text-decoration:none;
+}
+
+a:hover {
+	color:#f00;
+	text-decoration:underline;
+}
+
+body {
+	font-size:12px;
+	font-family:"맑은 고딕";
+	color:#333;
+}
+
+#memberfirst, #memberlist {
+	width:600px;
+	margin:0 auto;
+}
+
+#joinresult {
+	width:940px;
+	margin:0 auto;
+}
+
+h3 {
+	padding:0 0 10px 0;
+	font-size:15px;
+	font-weight:bold;
+}
+
+p {
+	padding:0 0 20px 0;
+}
+
+table {
+	width:100%;
+	border-top:2px solid #009999;
+	border-bottom:2px solid #009999;
+	border-spacing:0;
+}
+
+th {
+	border-bottom:1px solid #333;
+	padding:3px 0 3px 3px;
+	background:#d7f0ef;
+	text-align:left;
+}
+
+
+td {
+	border-bottom:1px solid #333;
+	padding:3px 0 3px 3px;	
+	height:30px;
+}
+
+#joinresult th {
+	padding-left:5px;
+	width:90px;	
+}
+
+#memberlist th, #memberlist td {
+	text-align:center;
+}
+
+#joinresult td.image {
+	width:115px;
+}
+
+#joinresult td.value {
+	padding-left:5px;
+}
+
+#joinresult td.taright {
+	text-align:right;
+}
+
+#memberfirst input {
+	border:1px solid #a6d5dd;
+	padding:1px;
+}
+
+#memberfirst .btn_area {
+	text-align:center;
+}
+
+#memberfirst input[type="button"] {
+	border:0;
+	width:100px;
+	padding:5px;
+	vertical-align:middle;
+	background:#d7f0ef;	
+}
+
+#joinresult img {
+	width:100px;
+	height:130px;
+	padding:5px;
+}
+
+#memberlist img {
+	width:25px;
+	height:25px;
+	padding:3px;
+}
