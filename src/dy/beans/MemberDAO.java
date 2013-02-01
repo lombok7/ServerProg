@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import common.LoggableStatement;
 
 import dy.db.DbcpBean;
@@ -163,8 +165,8 @@ public class MemberDAO {
 		return null;
 	}
 
-	public boolean checkLogin(String id, String pwd) {
-		// TODO Auto-generated method stub
+	public MemberVO checkLogin(String id, String pwd) {
+		// TODO Autso-generated method stub
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -173,16 +175,13 @@ public class MemberDAO {
 		
 		try {
 		
-			String sql = "SELECT id FROM member WHERE id = ? AND pwd = PASSWORD(?)";
+			String sql = "SELECT id, filename FROM member WHERE id = ? AND pwd = PASSWORD(?)";
 			
 			if (logEnabled) {
 				pstmt = new LoggableStatement(conn, sql);
 			} else {
 				pstmt = conn.prepareStatement(sql);
 			}
-			
-			System.out.println("id = " + id);
-			System.out.println("pwd = " + pwd);
 			
 			pstmt.setString(1, id);
 			pstmt.setString(2, pwd);
@@ -193,7 +192,13 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();			
 			
 			if (rs.next()) {
-				return true;
+				
+				MemberVO mvo = new MemberVO();
+				
+				mvo.setId(rs.getString("id"));
+				mvo.setFilename(rs.getString("filename"));
+				
+				return mvo;
 			}			
 					
 		} catch (SQLException e) {
@@ -208,6 +213,6 @@ public class MemberDAO {
 				e.printStackTrace();
 			}
 		}
-		return false;
+		return null;
 	}
 }
