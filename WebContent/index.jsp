@@ -21,11 +21,11 @@
 				
 				if (process == "join") {
 					
-					document.frm_member.encoding = "multipart/form-data";
 					document.frm_member.action = "./member.do?cmd=insert";
 				
 				} else if (process == "login") {
 				
+					document.frm_member.encoding = "";
 					document.frm_member.action = "./member.do?cmd=login";
 					
 				}
@@ -39,7 +39,7 @@
 		<div id="memberfirst">
 			<h3>회원 가입</h3>
 			<p>*표시는 필수 항목입니다.</p>
-			<form name="frm_member" method="post">
+			<form name="frm_member" method="post" enctype="multipart/form-data">
 				<fieldset> 
 					<table>
 						<tbody>
