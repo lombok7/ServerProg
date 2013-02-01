@@ -19,7 +19,7 @@ import com.oreilly.servlet.MultipartRequest;
 import dy.beans.MemberDAO;
 import dy.beans.MemberVO;
 
-public class MemberController extends HttpServlet {
+public class WebMemberController extends HttpServlet {
 	
 	// 이미지가 저장될 서버 폴더 경로.
 	// \\ 2개씩 한 개만 하면, \n\r 이런 걸로 인식함.
