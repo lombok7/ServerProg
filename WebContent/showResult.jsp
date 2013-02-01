@@ -34,7 +34,7 @@
 						<td class="value">${member.filesize }</td>
 					</tr>
 					<tr>
-						<td colspan="3" class="taright"><a href="./member.do?cmd=selectall">회원보기</a></td>
+						<td colspan="3" class="taright">[<a href="./index.jsp">로그인</a>]</td>
 					</tr>
 				</tbody>
 			</table>
