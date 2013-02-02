@@ -18,7 +18,7 @@ public class DbcpBean {
 		try {
 			Class.forName("org.apache.commons.dbcp.PoolingDriver");
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:apache:commons:dbcp:/tpool");
+			conn = DriverManager.getConnection("jdbc:apache:commons:dbcp:/lpool");
 		
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
