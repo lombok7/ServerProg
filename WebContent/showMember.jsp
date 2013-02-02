@@ -29,7 +29,7 @@
 	<body>
 		<div id="memberlist">
 			<h3>회원 목록</h3>
-			<p /><span class="loginid"><%= loginid %></span> [ <img src="./upimage/<%= loginfilename %>" /> ] 님이 로그인 중 입니다. <a href="./member.do?cmd=logout">[로그아웃]</a>
+			<p /><span class="loginid"><%= loginid %></span> [ <img src="./upimage/<%= loginfilename %>" class="loginfile" /> ] 님이 로그인 중 입니다. [<a href="./member.do?cmd=logout">로그아웃</a>]
 			<table>
 				<thead>
 					<tr>

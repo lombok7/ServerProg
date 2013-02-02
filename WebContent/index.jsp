@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Join Member Page</title>
+		<title>Join / Login Member Page</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link href="./css/member.css" rel="stylesheet" type="text/css" /> 
 		<script type="text/javascript" src="./js/jquery-1.8.2.min.js"></script>
@@ -37,7 +37,7 @@
 	</head>
 	<body>
 		<div id="memberfirst">
-			<h3>회원 가입</h3>
+			<h3>회원 가입 / 로그인</h3>
 			<p>*표시는 필수 항목입니다.</p>
 			<form name="frm_member" method="post" enctype="multipart/form-data">
 				<fieldset> 

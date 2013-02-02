@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.oreilly.servlet.MultipartRequest;
 
-public class TestMemberController extends HttpServlet {
+public class MobileMemberController extends HttpServlet {
 
 	/**
 	 * 
