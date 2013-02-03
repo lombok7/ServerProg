@@ -179,10 +179,7 @@ public class WebMemberController extends HttpServlet {
 		// 이 순간 파일 업로드됨.
 		try {
 			
-			request.setCharacterEncoding("UTF-8");
-			response.setCharacterEncoding("UTF-8");
-			
-			MultipartRequest mRequest = new MultipartRequest(request, folderPath, maxByteSize);
+			MultipartRequest mRequest = new MultipartRequest(request, folderPath, maxByteSize,"UTF-8");
 			
 			id = mRequest.getParameter("id");
 			pwd = mRequest.getParameter("pwd");
@@ -294,6 +291,7 @@ public class WebMemberController extends HttpServlet {
 		if (mvo.getFilename() == null) {
 
 			request.setAttribute("filepath", "NO FILE");
+		
 		} else {
 			
 			request.setAttribute("filelocalpath", folderPath + mvo.getFilename());
