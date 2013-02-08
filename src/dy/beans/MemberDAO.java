@@ -139,7 +139,7 @@ public class MemberDAO {
 			while (rs.next()) {
 				mvo = new MemberVO();
 				
-				mvo.setFilename(rs.getString("filename"));
+				mvo.setFilename(rs.getString("filename") == null ? "noimage.png" : rs.getString("filename"));	
 				mvo.setFilesize(rs.getInt("filesize"));
 				mvo.setId(rs.getString("id"));
 				mvo.setPwd(rs.getString("pwd"));

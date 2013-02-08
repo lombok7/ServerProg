@@ -107,7 +107,7 @@ public class WebMemberController extends HttpServlet {
 			HttpSession session = request.getSession();
 			
 			session.setAttribute("loginid", mvo.getId());
-			session.setAttribute("loginfilename", mvo.getFilename());
+			session.setAttribute("loginfilename", mvo.getFilename() == null ? "noimage.png" : mvo.getFilename());
 			
 			RequestDispatcher rd = request.getRequestDispatcher("./member.do?cmd=selectall");
 						
@@ -290,8 +290,8 @@ public class WebMemberController extends HttpServlet {
 		
 		if (mvo.getFilename() == null) {
 
-			request.setAttribute("filepath", "NO FILE");
-		
+			request.setAttribute("filewebpath", "./upimage/noimage.png");
+					
 		} else {
 			
 			request.setAttribute("filelocalpath", folderPath + mvo.getFilename());
