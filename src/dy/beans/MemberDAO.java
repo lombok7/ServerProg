@@ -166,7 +166,7 @@ public class MemberDAO {
 	}
 
 	public MemberVO checkLogin(String id, String pwd) {
-		// TODO Autso-generated method stub
+		// TODO Auto-generated method stub
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
