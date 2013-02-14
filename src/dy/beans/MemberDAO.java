@@ -57,7 +57,7 @@ public class MemberDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
+			return false;
 		} finally {
 			try {
 				if (pstmt != null) pstmt.close();
@@ -104,7 +104,7 @@ public class MemberDAO {
 		
 		} catch (SQLException e) {
 			e.printStackTrace();
-
+		
 		} finally {
 			try {
 				if (rs != null) 

@@ -248,9 +248,11 @@ public class WebMemberController extends HttpServlet {
 			} else {
 				String errMsg = "회원 가입에 실패하였습니다.";
 				
-				// 업로드된 파일 삭제
-				rename.delete();
-				
+				// DB에 insert 실패 시 업로드된 파일 삭제
+				if (mvo.getFilename() != null) {
+					rename.delete();
+				}
+					
 				request.setAttribute("errMsg", errMsg);
 				
 				RequestDispatcher rd = request.getRequestDispatcher("./err.jsp");
