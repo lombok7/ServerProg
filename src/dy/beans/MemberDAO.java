@@ -9,7 +9,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import common.LoggableStatement;
+import util.LoggableStatement;
+
 
 import dy.db.DbcpBean;
 
